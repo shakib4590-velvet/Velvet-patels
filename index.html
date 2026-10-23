@@ -1,0 +1,532 @@
+!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="view<port" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#b85c78">
+  <meta name="description" content="Discover elegant fashion accessories at Velvet Petals. Shop beautiful pieces with easy WhatsApp ordering.">
+
+  <title>Velvet Petals | Luxury Accessories</title>
+
+  <style>
+    :root {
+      --pink: #f8e7ed;
+      --deep-pink: #ad526f;
+      --dark-pink: #78364d;
+      --gold: #c5a059;
+      --cream: #fffaf6;
+      --white: #ffffff;
+      --text: #382832;
+      --muted: #796a70;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--cream);
+      color: var(--text);
+      font-family: Georgia, "Times New Roman", serif;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button, input {
+      font: inherit;
+    }
+
+    .announcement {
+      background: var(--dark-pink);
+      color: white;
+      text-align: center;
+      padding: 9px 8px;
+      font-size: 12px;
+      letter-spacing: 1px;
+    }
+
+    header {
+      background: var(--white);
+      text-align: center;
+      padding: 22px 12px 16px;
+      border-bottom: 1px solid #e8d4b1;
+    }
+
+    .brand {
+      color: var(--deep-pink);
+      font-size: clamp(28px, 7vw, 42px);
+      letter-spacing: 2px;
+      margin: 0;
+    }
+
+    .tagline {
+      color: var(--gold);
+      font-family: Arial, sans-serif;
+      font-size: 10px;
+      letter-spacing: 4px;
+      margin: 8px 0 16px;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 22px;
+      font-family: Arial, sans-serif;
+      font-size: 13px;
+    }
+
+    nav a:hover {
+      color: var(--deep-pink);
+    }
+
+    .hero {
+      background:
+        radial-gradient(ellipse at top right, #f2d2dc, transparent 55%),
+        linear-gradient(135deg, #fffaf6, #f7e1e8);
+      text-align: center;
+      padding: 58px 20px 52px;
+    }
+
+    .eyebrow {
+      color: var(--gold);
+      letter-spacing: 3px;
+      font: 11px Arial, sans-serif;
+      text-transform: uppercase;
+    }
+
+    .hero h2 {
+      color: var(--dark-pink);
+      font-size: clamp(32px, 8vw, 48px);
+      line-height: 1.2;
+      font-weight: normal;
+      margin: 18px auto 14px;
+      max-width: 600px;
+    }
+
+    .hero p {
+      color: var(--muted);
+      font: 14px/1.8 Arial, sans-serif;
+      max-width: 420px;
+      margin: 0 auto 24px;
+    }
+
+    .button {
+      display: inline-block;
+      border: 1px solid var(--gold);
+      border-radius: 30px;
+      padding: 13px 25px;
+      background: var(--deep-pink);
+      color: white;
+      font: 13px Arial, sans-serif;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .button:hover {
+      background: var(--dark-pink);
+      transform: translateY(-2px);
+    }
+
+    .section {
+      padding: 42px 16px;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .section-heading {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    .section-heading h2 {
+      font-weight: normal;
+      font-size: 30px;
+      color: var(--dark-pink);
+      margin: 10px 0;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+      font: 13px/1.7 Arial, sans-serif;
+    }
+
+    .search-box {
+      display: block;
+      width: 100%;
+      max-width: 420px;
+      margin: 0 auto 24px;
+      border: 1px solid #e5cbd3;
+      border-radius: 30px;
+      padding: 13px 17px;
+      background: white;
+      outline: none;
+      font: 14px Arial, sans-serif;
+    }
+
+    .search-box:focus {
+      border-color: var(--gold);
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 13px;
+    }
+
+    .product-card {
+      background: white;
+      border: 1px solid #ead8dc;
+      border-radius: 15px;
+      padding: 9px;
+      overflow: hidden;
+      box-shadow: 0 5px 18px #6d34400c;
+    }
+
+    .product-image-wrap {
+      height: 155px;
+      background: #f8e8ed;
+      border-radius: 10px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .product-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .placeholder {
+      font-size: 42px;
+    }
+
+    .product-card h3 {
+      color: var(--dark-pink);
+      font-size: 17px;
+      font-weight: normal;
+      margin: 13px 2px 7px;
+    }
+
+    .product-card .description {
+      color: var(--muted);
+      font: 12px/1.5 Arial, sans-serif;
+      margin: 0 2px 10px;
+    }
+
+    .price {
+      color: #9b742f;
+      font: bold 17px Arial, sans-serif;
+      margin: 10px 2px 12px;
+    }
+
+    .order-button {
+      width: 100%;
+      padding: 11px 5px;
+      font-size: 12px;
+    }
+
+    .empty-message {
+      display: none;
+      text-align: center;
+      color: var(--muted);
+      padding: 20px;
+      font: 14px Arial, sans-serif;
+    }
+
+    .about {
+      background: #f7e8ed;
+      text-align: center;
+      padding: 38px 20px;
+    }
+
+    .about h2 {
+      color: var(--dark-pink);
+      font-size: 28px;
+      font-weight: normal;
+    }
+
+    .about p {
+      max-width: 520px;
+      margin: auto;
+      color: var(--muted);
+      font: 14px/1.9 Arial, sans-serif;
+    }
+
+    .contact {
+      text-align: center;
+      padding: 35px 15px;
+    }
+
+    footer {
+      background: #3d2932;
+      color: white;
+      text-align: center;
+      padding: 25px 15px;
+    }
+
+    footer h2 {
+      color: #edc9d6;
+      font-weight: normal;
+      letter-spacing: 1px;
+    }
+
+    footer p {
+      color: #e8d9df;
+      font: 12px/1.8 Arial, sans-serif;
+    }
+
+    @media (min-width: 650px) {
+      .product-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 20px;
+      }
+
+      .product-image-wrap {
+        height: 230px;
+      }
+
+      .section {
+        padding: 55px 22px;
+      }
+    }
+
+    @media (min-width: 900px) {
+      .product-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="announcement">
+    LITTLE THINGS, BIG HAPPINESS ✨
+  </div>
+
+  <header>
+    <h1 class="brand">Velvet Petals</h1>
+    <p class="tagline">BEAUTY IN EVERY DETAIL</p>
+
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#shop">Shop</a>
+      <a href="#about">Our Story</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="eyebrow">A little touch of luxury</div>
+
+      <h2>Elegance Made Just for You</h2>
+
+      <p>
+        Discover beautiful accessories that make
+        every moment feel special.
+      </p>
+
+      <a class="button" href="#shop">EXPLORE COLLECTION</a>
+    </section>
+
+    <section class="section" id="shop">
+      <div class="section-heading">
+        <div class="eyebrow">Our favourites</div>
+        <h2>Lovely Collections</h2>
+        <p>Find your next favourite accessory.</p>
+      </div>
+
+      <input
+        class="search-box"
+        type="search"
+        id="search"
+        placeholder="Search products..."
+        aria-label="Search products"
+      >
+
+      <div class="product-grid" id="productGrid">
+
+        <!-- Product 1 -->
+        <article class="product-card" data-name="pretty earrings">
+          <div class="product-image-wrap">
+            <img
+              class="product-image"
+              src="Image/earrings.jpg"
+              alt="Pretty Earrings"
+              onerror="this.style.display='none';this.nextElementSibling.style.display='block'"
+            >
+            <span class="placeholder" style="display:none">✨</span>
+          </div>
+
+          <h3>Pretty Earrings</h3>
+          <p class="description">A delicate touch of elegance.</p>
+          <p class="price">৳250</p>
+
+          <button class="button order-button"
+            onclick="order('Pretty Earrings', 250)">
+            Order on WhatsApp
+          </button>
+        </article>
+
+        <!-- Product 2 -->
+        <article class="product-card" data-name="hair accessories">
+          <div class="product-image-wrap">
+            <img
+              class="product-image"
+              src="Image/hair.jpg"
+              alt="Hair Accessories"
+              onerror="this.style.display='none';this.nextElementSibling.style.display='block'"
+            >
+            <span class="placeholder" style="display:none">🎀</span>
+          </div>
+
+          <h3>Hair Accessories</h3>
+          <p class="description">Sweet details for your style.</p>
+          <p class="price">৳150</p>
+
+          <button class="button order-button"
+            onclick="order('Hair Accessories', 150)">
+            Order on WhatsApp
+          </button>
+        </article>
+
+        <!-- Product 3 -->
+        <article class="product-card" data-name="elegant necklace">
+          <div class="product-image-wrap">
+            <img
+              class="product-image"
+              src="Image/necklace.jpg"
+              alt="Elegant Necklace"
+              onerror="this.style.display='none';this.nextElementSibling.style.display='block'"
+            >
+            <span class="placeholder" style="display:none">💎</span>
+          </div>
+
+          <h3>Elegant Necklace</h3>
+          <p class="description">Simple, timeless beauty.</p>
+          <p class="price">৳350</p>
+
+          <button class="button order-button"
+            onclick="order('Elegant Necklace', 350)">
+            Order on WhatsApp
+          </button>
+        </article>
+
+        <!-- Product 4 -->
+        <article class="product-card" data-name="charming bracelet">
+          <div class="product-image-wrap">
+            <img
+              class="product-image"
+              src="Image/bracelet.jpg"
+              alt="Charming Bracelet"
+              onerror="this.style.display='none';this.nextElementSibling.style.display='block'"
+            >
+            <span class="placeholder" style="display:none">🌸</span>
+          </div>
+
+          <h3>Charming Bracelet</h3>
+          <p class="description">A lovely gift for yourself.</p>
+          <p class="price">৳200</p>
+
+          <button class="button order-button"
+            onclick="order('Charming Bracelet', 200)">
+            Order on WhatsApp
+          </button>
+        </article>
+
+      </div>
+
+      <p class="empty-message" id="emptyMessage">
+        No products found. Try another name.
+      </p>
+    </section>
+
+    <section class="about" id="about">
+      <div class="eyebrow">Our little world</div>
+      <h2>Made for Your Beautiful Moments</h2>
+      <p>
+        At Velvet Petals, we believe that little details
+        can make a big difference. Explore accessories
+        selected to add a touch of charm to your everyday style.
+      </p>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="eyebrow">We're here for you</div>
+      <h2>Let's Talk</h2>
+      <p>Questions about a product? Order through WhatsApp.</p>
+      <a class="button" href="#shop">SHOP OUR COLLECTION</a>
+    </section>
+  </main>
+
+  <footer>
+    <h2>Velvet Petals</h2>
+    <p>Beauty in Every Detail ✨</p>
+    <p>© <span id="year"></span> Velvet Petals. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // নিজের WhatsApp নম্বর বসাও:
+    // Bangladesh: 880 দিয়ে শুরু, + বা space নয়
+    const whatsappNumber = "8801866850890";
+
+    function order(productName, price) {
+      if (whatsappNumber.includes("X")) {
+        alert("Please add your WhatsApp number in the website code first.");
+        return;
+      }
+
+      const message =
+        "Hello Velvet Petals! 💗\n\n" +
+        "Product: " + productName + "\n" +
+        "Price: Tk " + price + "\n\n" +
+        "I would like to order this product.";
+
+      const url =
+        "https://wa.me/" + whatsappNumber +
+        "?text=" + encodeURIComponent(message);
+
+      window.location.href = url;
+    }
+
+    // Product search
+    const searchInput = document.getElementById("search");
+    const cards = document.querySelectorAll(".product-card");
+    const emptyMessage = document.getElementById("emptyMessage");
+
+    searchInput.addEventListener("input", function () {
+      const query = this.value.toLowerCase().trim();
+      let visibleCount = 0;
+
+      cards.forEach(function (card) {
+        const name = card.dataset.name.toLowerCase();
+        const visible = name.includes(query);
+
+        card.style.display = visible ? "" : "none";
+
+        if (visible) visibleCount++;
+      });
+
+      emptyMessage.style.display =
+        visibleCount === 0 ? "block" : "none";
+    });
+
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+  </script>
+
+</body>
+</html>
